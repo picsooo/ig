@@ -20,10 +20,10 @@ const EDI = {
     {id:"equipements", img:"photo-1717386255773-1e3037c81788", pos:"50% 50%", nom:"Leasing Équipements", court:"Équipements", ex:"Une machine de production", prix:9000000,
      desc:"Financement destiné à l’acquisition des équipements et machines de production.",
      biens:["Machines de production","Lignes de conditionnement","Équipements industriels"]},
-    {id:"btp", img:"photo-1747004066130-c6531b74d353", pos:"45% 60%", nom:"Leasing BTP", court:"BTP", ex:"Une pelle hydraulique", prix:22000000,
+    {id:"btp", img:"photo-1747004066130-c6531b74d353", pos:"55% 60%", nom:"Leasing BTP", court:"BTP", ex:"Une pelle hydraulique", prix:22000000,
      desc:"Financement réservé à l’acquisition des engins et équipements du secteur du bâtiment, travaux publics et hydraulique.",
      biens:["Engins de terrassement","Grues et nacelles","Matériel hydraulique"]},
-    {id:"immobilier", img:"photo-1589282741585-30ab896335cd", pos:"50% 40%", nom:"Leasing Immobilier", court:"Immobilier", ex:"Un local professionnel", prix:35000000,
+    {id:"immobilier", img:"photo-1589282741585-30ab896335cd", pos:"22% 50%", nom:"Leasing Immobilier", court:"Immobilier", ex:"Un local professionnel", prix:35000000,
      desc:"Financement destiné à l’acquisition de vos locaux professionnels.",
      biens:["Bureaux","Locaux commerciaux","Ateliers et entrepôts"]}
   ],
