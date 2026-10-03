@@ -25,7 +25,6 @@
 </main>
 <script src="js/corporate.js"></script>
 <script>
-document.getElementById("grille-sol").innerHTML = EDI.produits.map(p=>`
-  <a class="sol" href="produit.html?p=${p.id}">${icon(p.id)}<h3>${p.nom}</h3><p>${p.desc}</p><span class="lien">Découvrir la solution</span></a>`).join("");
+document.getElementById("grille-sol").innerHTML = EDI.produits.map(carteSol).join("");
 </script>
 </body></html>

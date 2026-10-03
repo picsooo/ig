@@ -43,7 +43,7 @@ function montageSimulateur(el, defId){
   el.innerHTML = `
     <h3>Simulez votre loyer</h3>
     <div class="sim-biens" role="group" aria-label="Type de bien">
-      ${EDI.produits.map(p=>`<button type="button" data-id="${p.id}" aria-pressed="${p.id===cur.id}">${icon(p.id)}${p.court}</button>`).join("")}
+      ${EDI.produits.map(p=>`<button type="button" data-id="${p.id}" aria-pressed="${p.id===cur.id}" style="background-image:url(${photo(p,400)})"><span>${p.court}</span></button>`).join("")}
     </div>
     <div class="champ"><label for="s-prix">Prix du bien (HT)</label>
       <div class="prix-box"><input id="s-prix" class="num" inputmode="numeric" autocomplete="off"><span>DA</span></div></div>
@@ -75,6 +75,7 @@ function montageSimulateur(el, defId){
     cur=EDI.produits.find(p=>p.id===b.dataset.id);
     el.querySelectorAll(".sim-biens button").forEach(x=>x.setAttribute("aria-pressed",x===b));
     setPrix(cur.prix); maj();
+    el.dispatchEvent(new CustomEvent("bien",{detail:cur}));
   }));
   prix.addEventListener("input",()=>{const v=lire(); if(v) setPrix(v); maj()});
   du.addEventListener("input",maj); pr.addEventListener("input",maj);
@@ -87,4 +88,20 @@ function carteReseau(el){
   el.insertAdjacentHTML("beforeend", EDI.reseau.map(r=>
     `<div class="pt${r.siege?' siege':''}" style="left:${x(r.lon)}%;top:${y(r.lat)}%"><i></i>${r.v}</div>`).join("")
     + `<div class="pt sud" style="left:${x(3.6)}%;top:88%"><i></i>Sud · à venir</div>`);
+}
+
+/* Carte solution en photo */
+function carteSol(p){
+  return `<a class="sol" href="produit.html?p=${p.id}"><div class="ph" style="background-image:url(${photo(p,1000)})"></div>
+  <div class="corps"><h3>${p.nom}</h3><p>${p.desc}</p><span class="lien">Découvrir la solution</span></div></a>`;
+}
+/* Fond du hero : une photo par solution, synchronisée avec le simulateur */
+function heroPhotos(zone, sim){
+  zone.innerHTML = EDI.produits.map(p=>`<div data-id="${p.id}" style="background-image:url(${photo(p,2000)})"></div>`).join("");
+  const show = id => zone.querySelectorAll("div").forEach(d=>d.classList.toggle("on",d.dataset.id===id));
+  let i=0, auto=setInterval(()=>{i=(i+1)%EDI.produits.length; show(EDI.produits[i].id); leg(EDI.produits[i])},5200);
+  const lg=document.getElementById("hero-leg");
+  function leg(p){ if(lg) lg.innerHTML=`<i></i>${p.nom} · ${p.ex}`; }
+  sim.addEventListener("bien",e=>{clearInterval(auto); show(e.detail.id); leg(e.detail)});
+  show(EDI.produits[0].id); leg(EDI.produits[0]);
 }

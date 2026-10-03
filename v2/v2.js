@@ -6,14 +6,12 @@
   const setPrix=v=>prix.value=v.toLocaleString("fr-FR").replace(/\u202f|\u00a0/g," ");
 
   /* Choix du bien */
-  $("biens").innerHTML=EDI.produits.map((p,i)=>`<button type="button" data-id="${p.id}" aria-pressed="${i===0}">${icon(p.id)}${p.court}</button>`).join("");
+  $("biens").innerHTML=EDI.produits.map((p,i)=>`<button type="button" data-id="${p.id}" aria-pressed="${i===0}"><i style="background-image:url(${photo(p,120)})"></i>${p.court}</button>`).join("");
+  $("fonds").innerHTML=EDI.produits.map(p=>`<div data-id="${p.id}" style="background-image:url(${photo(p,2200)})"></div>`).join("");
   function dessiner(){
-    $("svgzone").innerHTML=icon(cur.id,"gros");
-    $("ex").textContent=cur.ex;
-    document.querySelectorAll("#svgzone path,#svgzone rect,#svgzone circle").forEach(el=>{
-      const l=Math.ceil(el.getTotalLength ? el.getTotalLength() : 200)+2;
-      el.style.setProperty("--l",l); el.classList.add("trace");
-    });
+    $("fonds").querySelectorAll("div").forEach(d=>d.classList.toggle("on",d.dataset.id===cur.id));
+    $("ex").innerHTML=`<i></i>${cur.nom} · ${cur.ex}`;
+    $("vitrine").style.backgroundImage=`url(${photo(cur,1800)})`;
   }
   $("biens").addEventListener("click",e=>{
     const b=e.target.closest("button"); if(!b) return;
@@ -50,8 +48,11 @@
     $("msg").textContent = fin ? `Levée d’option : ${cur.ex.toLowerCase()} devient le vôtre pour 1 000 DA.`
       : m===1 ? `Mois 1 : vous versez le premier loyer majoré, le bien est livré et vous l’utilisez déjà.`
       : `Mois ${m} sur ${n} : vous utilisez le bien, il reste ${n-m+1} loyer${n-m+1>1?"s":""} avant la levée d’option.`;
-    $("dessin").classList.toggle("possede",fin);
+    const prog=fin?1:(m-1)/n;
+    $("vitrine").style.filter=`grayscale(${1-prog}) brightness(${.6+.4*prog})`;
+    $("vitrine").classList.toggle("possede",fin);
     $("etat").textContent=fin?"Vous êtes propriétaire":"Propriété d’El Djazair Idjar, à votre disposition";
+    $("cle").textContent=fin?"Levée d’option : 1 000 DA":`${Math.round(prog*100)} % du contrat`;
   }
   function depuisPointeur(x){
     const bars=$("frise").querySelectorAll("i"), fr=$("frise").getBoundingClientRect();

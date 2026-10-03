@@ -12,14 +12,13 @@
 <script src="js/common.js"></script>
 
 <main>
-  <section class="page-tete"><div class="wrap">
+  <section class="page-tete page-tete--photo" id="f-tete"><div class="wrap">
     <p class="fil"><a href="index.html">Accueil</a> / <a href="solutions.html">Nos solutions</a> / <span id="f-fil"></span></p>
     <h1 id="f-titre"></h1>
     <p class="lead" id="f-desc"></p>
   </div></section>
   <section class="sec"><div class="wrap fiche">
     <div style="display:grid;gap:26px">
-      <div class="fiche-vis" id="f-vis"></div>
       <div style="display:grid;gap:12px"><h3>Ce que vous pouvez financer</h3><ul class="puces" id="f-biens"></ul></div>
       <div style="display:grid;gap:12px"><h3>Conditions de financement</h3><div class="cond" style="grid-template-columns:1fr"><article><ul id="f-cond"></ul></article></div></div>
     </div>
@@ -37,10 +36,10 @@ document.title = p.nom + " · El Djazair Idjar";
 document.getElementById("f-fil").textContent = p.nom;
 document.getElementById("f-titre").textContent = p.nom;
 document.getElementById("f-desc").textContent = p.desc;
-document.getElementById("f-vis").innerHTML = icon(p.id);
+document.getElementById("f-tete").style.backgroundImage = `url(${photo(p,2000)})`;
 document.getElementById("f-biens").innerHTML = p.biens.map(b=>`<li>${b}</li>`).join("");
 document.getElementById("f-cond").innerHTML = EDI.conditions.map(b=>`<li>${b}</li>`).join("");
-document.getElementById("f-autres").innerHTML = EDI.produits.filter(x=>x.id!==p.id).map(x=>`<a href="produit.html?p=${x.id}">${icon(x.id)}${x.nom}</a>`).join("");
+document.getElementById("f-autres").innerHTML = EDI.produits.filter(x=>x.id!==p.id).map(x=>`<a href="produit.html?p=${x.id}"><i style="background-image:url(${photo(x,200)})"></i>${x.nom}</a>`).join("");
 montageSimulateur(document.getElementById("sim"), p.id);
 </script>
 </body></html>

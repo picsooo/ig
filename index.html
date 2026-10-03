@@ -13,6 +13,7 @@
 
 <main>
   <section class="hero">
+    <div class="hero-bg" id="hero-bg" aria-hidden="true"></div>
     <div class="wrap">
       <div class="hero-txt">
         <span class="ar">الجزائر إيجار</span>
@@ -23,6 +24,7 @@
           <a class="btn btn--trait" href="solutions.html">Voir nos 6 solutions</a>
         </div>
         <div class="hero-faits"><span><b>Financement total</b> de la demande</span><span>Valeur résiduelle <b>1 000 DA</b></span><span>Actionnaires <b>CPA, BADR, Asicom</b></span></div>
+        <p class="hero-legende" id="hero-leg"></p>
       </div>
       <div class="sim" id="sim"></div>
     </div>
@@ -109,8 +111,8 @@
 <script src="js/corporate.js"></script>
 <script>
 montageSimulateur(document.getElementById("sim"),"automobile");
-document.getElementById("grille-sol").innerHTML = EDI.produits.map(p=>`
-  <a class="sol" href="produit.html?p=${p.id}">${icon(p.id)}<h3>${p.nom}</h3><p>${p.desc}</p><span class="lien">Découvrir la solution</span></a>`).join("");
+document.getElementById("grille-sol").innerHTML = EDI.produits.map(carteSol).join("");
+heroPhotos(document.getElementById("hero-bg"), document.getElementById("sim"));
 const li = a => a.map(x=>`<li>${x}</li>`).join("");
 document.getElementById("l-av").innerHTML=li(EDI.avantages);
 document.getElementById("l-el").innerHTML=li(EDI.eligibilite);

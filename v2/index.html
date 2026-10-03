@@ -18,13 +18,16 @@
 </div></header>
 
 <main>
-  <section class="studio"><div class="w">
-    <span class="ar">الجزائر إيجار · Leasing</span>
-    <h1>Que voulez-vous financer ?</h1>
-    <div class="biens" id="biens" role="group" aria-label="Type de bien"></div>
-    <div class="scene">
-      <div class="dessin" id="dessin" aria-hidden="true"><div class="grille"></div><span class="ex" id="ex"></span><div id="svgzone"></div><span class="etat" id="etat">Propriété d’El Djazair Idjar</span></div>
-      <div class="reglages">
+  <section class="studio">
+    <div class="fonds" id="fonds" aria-hidden="true"></div>
+    <div class="w">
+      <div class="titre" style="display:grid;gap:18px">
+        <span class="ar">الجزائر إيجار</span>
+        <h1>Que voulez-vous financer ?</h1>
+        <p class="ex" id="ex"></p>
+        <div class="biens" id="biens" role="group" aria-label="Type de bien"></div>
+      </div>
+      <div class="panneau">
         <div class="r-champ"><span class="tt">Prix du bien (HT)</span><div class="montant"><input id="prix" class="num" inputmode="numeric" aria-label="Prix du bien en dinars"><span>DA</span></div></div>
         <div class="r-champ"><label class="tt" for="duree">Durée <b id="o-duree"></b></label><input id="duree" type="range" min="36" max="60" step="12" value="60"></div>
         <div class="r-champ"><label class="tt" for="premier">Premier loyer majoré <b id="o-premier"></b></label><input id="premier" type="range" min="10" max="30" step="5" value="20"></div>
@@ -32,11 +35,12 @@
         <span class="avalider">Taux indicatif à valider par l’administration d’El Djazair Idjar</span>
       </div>
     </div>
-  </div></section>
+  </section>
 
   <section class="contrat" id="contrat"><div class="w">
     <h2>Votre contrat, mois par mois</h2>
-    <p class="sous">Faites glisser sur la frise : chaque barre est un mois de loyer. À la fin, le bien devient le vôtre pour 1 000 DA.</p>
+    <p class="sous">Faites glisser sur la frise : chaque barre est un mois de loyer. Plus vous avancez, plus le bien prend ses couleurs. À la fin, il devient le vôtre pour 1 000 DA.</p>
+    <div class="vitrine" id="vitrine"><span class="badge" id="etat"></span><span class="cle" id="cle"></span></div>
     <div class="frise" id="frise"><div class="curseur" id="curseur"></div></div>
     <input id="mois" type="range" min="1" value="1" aria-label="Mois du contrat">
     <p class="message" id="msg"></p>

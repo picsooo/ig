@@ -8,22 +8,22 @@ const EDI = {
   tauxIndicatif: 0.085,
   vr: 1000,
   produits: [
-    {id:"automobile", nom:"Leasing Automobile", court:"Automobile", ex:"Un véhicule utilitaire de livraison", prix:4500000,
+    {id:"automobile", img:"photo-1591412502638-0a113d5d1d6f", nom:"Leasing Automobile", court:"Automobile", ex:"Un véhicule utilitaire de livraison", prix:4500000,
      desc:"Financement destiné à l’acquisition de vos véhicules utilitaires et de tourisme.",
      biens:["Véhicules utilitaires","Véhicules de tourisme","Flottes d’entreprise"]},
-    {id:"transport", nom:"Leasing Transport", court:"Transport", ex:"Un camion porteur", prix:14000000,
+    {id:"transport", img:"photo-1694113372786-2553caec0c76", nom:"Leasing Transport", court:"Transport", ex:"Un camion porteur", prix:14000000,
      desc:"Financement destiné à l’acquisition de votre matériel de transport.",
      biens:["Camions et tracteurs routiers","Semi-remorques","Bus et minibus"]},
-    {id:"medical", nom:"Leasing Médical", court:"Médical", ex:"Un échographe pour votre cabinet", prix:6000000,
+    {id:"medical", img:"photo-1666214280352-db292c05fd80", nom:"Leasing Médical", court:"Médical", ex:"Un échographe pour votre cabinet", prix:6000000,
      desc:"Financement destiné à l’acquisition des équipements médicaux.",
      biens:["Imagerie et échographie","Équipements de laboratoire","Fauteuils et matériel dentaire"]},
-    {id:"equipements", nom:"Leasing Équipements", court:"Équipements", ex:"Une machine de production", prix:9000000,
+    {id:"equipements", img:"photo-1717386255773-1e3037c81788", nom:"Leasing Équipements", court:"Équipements", ex:"Une machine de production", prix:9000000,
      desc:"Financement destiné à l’acquisition des équipements et machines de production.",
      biens:["Machines de production","Lignes de conditionnement","Équipements industriels"]},
-    {id:"btp", nom:"Leasing BTP", court:"BTP", ex:"Une pelle hydraulique", prix:22000000,
+    {id:"btp", img:"photo-1747004066130-c6531b74d353", nom:"Leasing BTP", court:"BTP", ex:"Une pelle hydraulique", prix:22000000,
      desc:"Financement réservé à l’acquisition des engins et équipements du secteur du bâtiment, travaux publics et hydraulique.",
      biens:["Engins de terrassement","Grues et nacelles","Matériel hydraulique"]},
-    {id:"immobilier", nom:"Leasing Immobilier", court:"Immobilier", ex:"Un local professionnel", prix:35000000,
+    {id:"immobilier", img:"photo-1760426392296-9abd7fc8cab0", nom:"Leasing Immobilier", court:"Immobilier", ex:"Un local professionnel", prix:35000000,
      desc:"Financement destiné à l’acquisition de vos locaux professionnels.",
      biens:["Bureaux","Locaux commerciaux","Ateliers et entrepôts"]}
   ],
@@ -56,6 +56,9 @@ const EDI = {
     {v:"Oran", r:"Représentation régionale", lat:35.70, lon:-0.63}
   ]
 };
+
+/* Photos (Unsplash, licence libre) */
+const photo = (p, w=1600) => `https://images.unsplash.com/${p.img}?auto=format&fit=crop&w=${w}&q=72`;
 
 /* Icônes au trait (dessinées pour la maquette) */
 const ICONS = {

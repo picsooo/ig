@@ -23,42 +23,47 @@ p{margin:0}
 .bh nav a.mq{display:none}
 @media (min-width:860px){.bh nav a.mq{display:inline-block}}
 
-/* Studio : choix du bien */
-.studio{padding:28px 0 48px;min-height:calc(100svh - 64px)}
+/* Studio : plein écran photo */
+.studio{position:relative;display:grid;padding:34svh 0 96px;isolation:isolate;overflow:hidden}
+.studio h1{font-size:clamp(46px,12vw,92px)}
+@media (min-width:980px){.studio{min-height:calc(100svh - 64px);align-items:center;padding:64px 0 110px}}
+.fonds{position:absolute;left:0;right:0;top:0;height:75svh;z-index:-2;background:#0A2741}
+@media (min-width:980px){.fonds{height:auto;bottom:0}}
+.fonds div{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transform:scale(1.12);transition:opacity 1.2s ease,transform 9s cubic-bezier(.2,.6,.2,1)}
+.fonds div.on{opacity:1;transform:scale(1)}
+.studio::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(6,26,46,.25) 0svh,rgba(6,26,46,.15) 20svh,rgba(6,26,46,.85) 55svh,#061A2E 75svh)}
+@media (min-width:980px){.studio::after{background:linear-gradient(90deg,rgba(6,26,46,.9) 0%,rgba(6,26,46,.55) 45%,rgba(6,26,46,.1) 75%),linear-gradient(180deg,transparent 70%,#061A2E)}}
 .studio .w{display:grid;gap:22px}
 .studio .ar{color:#7fd0e6;font-size:18px}
+.studio h1{text-wrap:balance;text-shadow:0 2px 30px rgba(0,0,0,.35)}
+.ex{color:#cfe2ec;font-size:16px;display:flex;align-items:center;gap:10px}
+.ex i{width:28px;height:2px;background:#3FC1E0}
 .biens{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;scrollbar-width:none;margin-inline:-18px;padding-inline:18px}
 .biens::-webkit-scrollbar{display:none}
-.biens button{flex:none;display:flex;align-items:center;gap:8px;padding:10px 16px 10px 12px;border-radius:999px;border:1.5px solid rgba(255,255,255,.16);background:transparent;color:#cfe2ec;font-weight:620;font-size:15px;cursor:pointer}
-.biens button svg{width:26px;height:26px}
+.biens button{flex:none;display:flex;align-items:center;gap:9px;padding:5px 16px 5px 5px;border-radius:999px;border:1px solid rgba(255,255,255,.22);background:rgba(6,26,46,.45);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff;font-weight:620;font-size:15px;cursor:pointer}
+.biens button i{width:34px;height:34px;border-radius:50%;background:#0A2741 center/cover no-repeat;flex:none}
 .biens button[aria-pressed="true"]{background:#fff;color:#04263F;border-color:#fff}
-.scene{display:grid;gap:22px}
-@media (min-width:980px){.scene{grid-template-columns:1.1fr .9fr;align-items:center;gap:48px}}
-.dessin{position:relative;aspect-ratio:4/3;border-radius:24px;background:radial-gradient(120% 90% at 30% 20%,#0E3A5E,#071F36 70%);display:grid;place-items:center;overflow:hidden}
-.dessin .grille{position:absolute;inset:0;background-image:linear-gradient(rgba(127,208,230,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(127,208,230,.07) 1px,transparent 1px);background-size:32px 32px}
-.dessin svg.gros{position:relative;width:62%;height:auto;color:#7fd0e6;stroke-width:1.4}
-.dessin svg.gros path,.dessin svg.gros rect,.dessin svg.gros circle{transition:fill .6s}
-.dessin.possede svg.gros{color:#F1C98A}
-.dessin .ex{position:absolute;left:18px;top:16px;font-size:14px;color:#9fc1d2}
-.dessin .etat{position:absolute;right:16px;bottom:14px;font-size:13.5px;font-weight:650;padding:6px 12px;border-radius:999px;background:rgba(63,193,224,.14);color:#7fd0e6}
-.dessin.possede .etat{background:rgba(241,201,138,.18);color:#F1C98A}
-.trace{stroke-dasharray:var(--l);stroke-dashoffset:var(--l);animation:trace 1.4s ease forwards}
-@keyframes trace{to{stroke-dashoffset:0}}
-
-.reglages{display:grid;gap:18px}
+.panneau{display:grid;gap:18px;padding:22px;border-radius:22px;background:rgba(6,26,46,.62);backdrop-filter:blur(18px) saturate(1.2);-webkit-backdrop-filter:blur(18px) saturate(1.2);border:1px solid rgba(255,255,255,.12)}
+@media (min-width:980px){.studio .w{grid-template-columns:1.1fr .9fr;align-items:end;column-gap:56px}.studio .titre{grid-column:1}.panneau{grid-column:2;grid-row:1 / span 2}}
 .r-champ{display:grid;gap:8px}
 .r-champ .tt{display:flex;justify-content:space-between;font-size:14.5px;color:#9fc1d2;font-weight:600}
 .r-champ .tt b{color:#fff}
 .r-champ input[type=range]{width:100%;accent-color:#3FC1E0;height:28px}
 .montant{display:flex;align-items:baseline;gap:8px;border-bottom:1.5px solid rgba(255,255,255,.25);padding-bottom:6px}
-.montant input{background:transparent;border:0;outline:0;color:#fff;font-size:clamp(30px,7vw,44px);font-weight:800;font-stretch:80%;width:100%}
+.montant input{background:transparent;border:0;outline:0;color:#fff;font-size:clamp(30px,7vw,40px);font-weight:800;font-stretch:80%;width:100%}
 .montant span{color:#9fc1d2;font-weight:700}
-.loyer{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:18px 0;border-top:1px solid rgba(255,255,255,.1)}
-.loyer strong{font-size:clamp(44px,11vw,76px);font-weight:820;font-stretch:74%;color:#3FC1E0;line-height:1}
+.loyer{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap;padding-top:14px;border-top:1px solid rgba(255,255,255,.12)}
+.loyer strong{font-size:clamp(42px,10vw,64px);font-weight:820;font-stretch:74%;color:#3FC1E0;line-height:1}
 .loyer span{color:#9fc1d2}
 
 /* Contrat mois par mois */
 .contrat{padding:64px 0;background:#081F37}
+.vitrine{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:16/9;background:#0A2741 center/cover no-repeat;transition:filter .25s}
+.vitrine::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(6,26,46,.85))}
+.vitrine .badge{position:absolute;left:16px;bottom:14px;z-index:1;font-size:14px;font-weight:700;padding:8px 14px;border-radius:999px;background:rgba(6,26,46,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff;border:1px solid rgba(255,255,255,.2)}
+.vitrine.possede .badge{background:#F1C98A;color:#3A2600;border-color:#F1C98A}
+.vitrine .cle{position:absolute;right:14px;top:14px;z-index:1;font-size:13.5px;font-weight:700;color:#fff;padding:6px 12px;border-radius:999px;background:rgba(6,26,46,.55)}
+@media (min-width:980px){.vitrine{aspect-ratio:21/8}}
 .contrat .w{display:grid;gap:22px}
 .frise{position:relative;height:200px;display:flex;align-items:flex-end;gap:2px;touch-action:pan-y;cursor:ew-resize;padding-top:12px}
 .frise i{flex:1;background:#1E4C70;border-radius:2px 2px 0 0;transition:background .15s}
