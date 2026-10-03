@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#061A2E">
+<title>El Djazair Idjar · Votre leasing, mois par mois</title>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="v2.css">
+</head>
+<body>
+<script src="../js/common.js"></script>
+
+<header class="bh"><div class="w">
+  <a class="logo" href="#"><span class="logo-txt"><span class="logo-fr">El Djazair Idjar</span><span class="ar logo-ar">الجزائر إيجار</span></span></a>
+  <nav aria-label="Navigation"><a class="mq" href="#contrat">Votre contrat</a><a class="mq" href="#parcours">Parcours</a><a class="mq" href="#reseau">Réseau</a><a class="cta" href="#demande">Demander</a></nav>
+</div></header>
+
+<main>
+  <section class="studio"><div class="w">
+    <span class="ar">الجزائر إيجار · Leasing</span>
+    <h1>Que voulez-vous financer ?</h1>
+    <div class="biens" id="biens" role="group" aria-label="Type de bien"></div>
+    <div class="scene">
+      <div class="dessin" id="dessin" aria-hidden="true"><div class="grille"></div><span class="ex" id="ex"></span><div id="svgzone"></div><span class="etat" id="etat">Propriété d’El Djazair Idjar</span></div>
+      <div class="reglages">
+        <div class="r-champ"><span class="tt">Prix du bien (HT)</span><div class="montant"><input id="prix" class="num" inputmode="numeric" aria-label="Prix du bien en dinars"><span>DA</span></div></div>
+        <div class="r-champ"><label class="tt" for="duree">Durée <b id="o-duree"></b></label><input id="duree" type="range" min="36" max="60" step="12" value="60"></div>
+        <div class="r-champ"><label class="tt" for="premier">Premier loyer majoré <b id="o-premier"></b></label><input id="premier" type="range" min="10" max="30" step="5" value="20"></div>
+        <div class="loyer" aria-live="polite"><span>Votre loyer mensuel</span><strong class="num" id="mens"></strong></div>
+        <span class="avalider">Taux indicatif à valider par l’administration d’El Djazair Idjar</span>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="contrat" id="contrat"><div class="w">
+    <h2>Votre contrat, mois par mois</h2>
+    <p class="sous">Faites glisser sur la frise : chaque barre est un mois de loyer. À la fin, le bien devient le vôtre pour 1 000 DA.</p>
+    <div class="frise" id="frise"><div class="curseur" id="curseur"></div></div>
+    <input id="mois" type="range" min="1" value="1" aria-label="Mois du contrat">
+    <p class="message" id="msg"></p>
+    <div class="bilan num">
+      <div><b id="b-paye"></b><span>Déjà payé</span></div>
+      <div><b id="b-reste"></b><span>Reste à payer</span></div>
+      <div><b id="b-prem"></b><span>Premier loyer</span></div>
+      <div><b id="b-tot"></b><span>Coût total indicatif</span></div>
+    </div>
+  </div></section>
+
+  <section class="parcours" id="parcours"><div class="w">
+    <h2>Votre dossier, étape par étape</h2>
+    <p class="sous">Suivez le chemin de votre demande, du choix du bien jusqu’à la levée d’option.</p>
+    <ol class="etp" id="etp"></ol>
+    <div class="actions"><button class="btn btn--c" id="suiv">Étape suivante</button><button class="btn btn--l" id="raz">Recommencer</button></div>
+  </div></section>
+
+  <section class="conds"><div class="w">
+    <h2>Avantages et conditions</h2>
+    <div class="cg">
+      <div><h3>Avantages du leasing</h3><ul id="l-av"></ul></div>
+      <div><h3>Qui peut en bénéficier ?</h3><ul id="l-el"></ul></div>
+      <div><h3>Conditions de financement</h3><ul id="l-co"></ul></div>
+    </div>
+  </div></section>
+
+  <section class="fin" id="reseau"><div class="w">
+    <div style="display:grid;gap:18px;align-content:start">
+      <h2>Partout en Algérie</h2>
+      <p class="sous">Agences CPA et BADR, et représentations régionales à Akbou, Batna, Sétif et Oran. Une représentation au Sud est en préparation.</p>
+      <div class="pts" id="pts"></div>
+    </div>
+    <form class="f" id="demande" data-demo="Demande envoyée. Un chargé d’affaires vous rappelle (démonstration : rien n’est enregistré).">
+      <h2>Lancez votre demande</h2>
+      <div class="d2"><label>Raison sociale<input required></label><label>Téléphone<input type="tel" required placeholder="05 00 00 00 00"></label></div>
+      <div class="d2"><label>Solution<select id="f-bien"></select></label><label>Montant (HT, DA)<input id="f-prix" inputmode="numeric"></label></div>
+      <label>Wilaya<input placeholder="Ex. Sétif"></label>
+      <button class="btn btn--c" type="submit">Envoyer ma demande</button>
+    </form>
+  </div></section>
+</main>
+
+<footer class="pied2"><div class="w">
+  <div class="coords">
+    <span>Bâtiment N° 01, Cité AADL, la Concorde, Bir Mourad Raïs, Alger</span>
+    <a href="tel:+21320107215">+213 (0)20 107 215</a>
+    <a href="mailto:commercial@eldjazairidjar.dz">commercial@eldjazairidjar.dz</a>
+    <a href="https://www.facebook.com/LEASINGEDI/" target="_blank" rel="noopener">Facebook</a>
+  </div>
+  <iframe title="Siège d’El Djazair Idjar sur Google Maps" loading="lazy" src="https://maps.google.com/maps?q=Cit%C3%A9%20AADL%20la%20Concorde%2C%20Bir%20Mourad%20Ra%C3%AFs%2C%20Alger&z=15&output=embed"></iframe>
+  <span>© El Djazair Idjar Spa · Actionnaires : CPA, BADR, Asicom</span>
+</div></footer>
+
+<script src="v2.js"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Solution de leasing · El Djazair Idjar</title>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/corporate.css">
+</head>
+<body data-page="solutions">
+<script src="js/common.js"></script>
+
+<main>
+  <section class="page-tete"><div class="wrap">
+    <p class="fil"><a href="index.html">Accueil</a> / <a href="solutions.html">Nos solutions</a> / <span id="f-fil"></span></p>
+    <h1 id="f-titre"></h1>
+    <p class="lead" id="f-desc"></p>
+  </div></section>
+  <section class="sec"><div class="wrap fiche">
+    <div style="display:grid;gap:26px">
+      <div class="fiche-vis" id="f-vis"></div>
+      <div style="display:grid;gap:12px"><h3>Ce que vous pouvez financer</h3><ul class="puces" id="f-biens"></ul></div>
+      <div style="display:grid;gap:12px"><h3>Conditions de financement</h3><div class="cond" style="grid-template-columns:1fr"><article><ul id="f-cond"></ul></article></div></div>
+    </div>
+    <div class="sim" id="sim"></div>
+  </div></section>
+  <section class="sec sec--glacier"><div class="wrap" style="display:grid;gap:16px">
+    <h2>Les autres solutions</h2><div class="autres" id="f-autres"></div>
+  </div></section>
+</main>
+<script src="js/corporate.js"></script>
+<script>
+const id = new URLSearchParams(location.search).get("p") || "automobile";
+const p = EDI.produits.find(x=>x.id===id) || EDI.produits[0];
+document.title = p.nom + " · El Djazair Idjar";
+document.getElementById("f-fil").textContent = p.nom;
+document.getElementById("f-titre").textContent = p.nom;
+document.getElementById("f-desc").textContent = p.desc;
+document.getElementById("f-vis").innerHTML = icon(p.id);
+document.getElementById("f-biens").innerHTML = p.biens.map(b=>`<li>${b}</li>`).join("");
+document.getElementById("f-cond").innerHTML = EDI.conditions.map(b=>`<li>${b}</li>`).join("");
+document.getElementById("f-autres").innerHTML = EDI.produits.filter(x=>x.id!==p.id).map(x=>`<a href="produit.html?p=${x.id}">${icon(x.id)}${x.nom}</a>`).join("");
+montageSimulateur(document.getElementById("sim"), p.id);
+</script>
+</body></html>

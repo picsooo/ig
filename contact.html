@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Contact et demande de financement · El Djazair Idjar</title>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/corporate.css">
+</head>
+<body data-page="contact">
+<script src="js/common.js"></script>
+
+<main>
+  <section class="page-tete"><div class="wrap">
+    <p class="fil"><a href="index.html">Accueil</a> / Contact</p>
+    <h1>Contact et demande de financement</h1>
+    <p class="lead">Décrivez votre projet : un chargé d’affaires étudie votre besoin et vous rappelle.</p>
+  </div></section>
+  <section class="sec"><div class="wrap fiche">
+    <form class="form" id="demande" data-demo="Demande envoyée. Un chargé d’affaires vous rappelle (démonstration : rien n’est enregistré).">
+      <h3>Demande de financement</h3>
+      <div class="ligne2">
+        <label>Raison sociale<input required></label>
+        <label>Forme juridique<select><option>SARL</option><option>EURL</option><option>SPA</option><option>SNC</option><option>Profession libérale</option><option>Autre</option></select></label>
+      </div>
+      <div class="ligne2">
+        <label>Secteur d’activité<input required></label>
+        <label>Années d’activité<select><option>2 à 5 ans</option><option>Plus de 5 ans</option><option>Moins de 2 ans</option></select></label>
+      </div>
+      <div class="ligne2">
+        <label>Solution<select id="c-bien"></select></label>
+        <label>Montant du bien (HT, DA)<input id="c-prix" inputmode="numeric"></label>
+      </div>
+      <div class="ligne2">
+        <label>Nom et prénom<input required></label>
+        <label>Téléphone<input type="tel" required placeholder="05 00 00 00 00"></label>
+      </div>
+      <label>E-mail<input type="email"></label>
+      <label>Votre projet<textarea rows="4" placeholder="Bien à financer, fournisseur, délai souhaité…"></textarea></label>
+      <button class="btn btn--plein" type="submit">Envoyer ma demande</button>
+    </form>
+    <div class="contacts">
+      <article><h3>Direction commerciale</h3><p>Bâtiment N° 01, Cité AADL, la Concorde, Bir Mourad Raïs, Alger</p><a href="tel:+21320107215">+213 (0)20 107 215</a><a href="mailto:commercial@eldjazairidjar.dz">commercial@eldjazairidjar.dz</a></article>
+      <article><h3>Direction générale</h3><p>Même adresse</p><a href="tel:+21320107799">+213 (0)20 107 799</a></article>
+      <article><h3>Agences CPA et BADR</h3><p>Vous pouvez aussi déposer votre demande dans les agences bancaires de nos actionnaires.</p></article>
+    </div>
+  </div></section>
+</main>
+<script src="js/corporate.js"></script>
+<script>
+const q=new URLSearchParams(location.search), sb=document.getElementById("c-bien");
+sb.innerHTML=EDI.produits.map(p=>`<option value="${p.id}">${p.nom}</option>`).join("")+`<option>Refinancement</option>`;
+if(q.get("bien")) sb.value=q.get("bien");
+if(q.get("prix")) document.getElementById("c-prix").value=(+q.get("prix")).toLocaleString("fr-FR").replace(/\u202f|\u00a0/g," ");
+</script>
+</body></html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Nos solutions de leasing · El Djazair Idjar</title>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/corporate.css">
+</head>
+<body data-page="solutions">
+<script src="js/common.js"></script>
+
+<main>
+  <section class="page-tete"><div class="wrap">
+    <p class="fil"><a href="index.html">Accueil</a> / Nos solutions</p>
+    <h1>Nos solutions de leasing</h1>
+    <p class="lead">Six formules pour financer la totalité de vos investissements professionnels, sur 3 à 5 ans.</p>
+  </div></section>
+  <section class="sec"><div class="wrap"><div class="grille-sol" id="grille-sol"></div></div></section>
+  <section class="sec sec--glacier"><div class="wrap">
+    <div class="sec-tete"><h2>Refinancement</h2><p class="lead">El Djazair Idjar propose également une offre de refinancement. Détails communiqués par votre chargé d’affaires.</p></div>
+    <a class="btn btn--plein" href="contact.html#demande">Nous consulter</a>
+  </div></section>
+</main>
+<script src="js/corporate.js"></script>
+<script>
+document.getElementById("grille-sol").innerHTML = EDI.produits.map(p=>`
+  <a class="sol" href="produit.html?p=${p.id}">${icon(p.id)}<h3>${p.nom}</h3><p>${p.desc}</p><span class="lien">Découvrir la solution</span></a>`).join("");
+</script>
+</body></html>
