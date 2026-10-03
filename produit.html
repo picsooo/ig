@@ -36,10 +36,10 @@ document.title = p.nom + " · El Djazair Idjar";
 document.getElementById("f-fil").textContent = p.nom;
 document.getElementById("f-titre").textContent = p.nom;
 document.getElementById("f-desc").textContent = p.desc;
-document.getElementById("f-tete").style.backgroundImage = `url(${photo(p,2000)})`;
+document.getElementById("f-tete").style.backgroundImage = `url(${photo(p,2000)})`; document.getElementById("f-tete").style.backgroundPosition = p.pos;
 document.getElementById("f-biens").innerHTML = p.biens.map(b=>`<li>${b}</li>`).join("");
 document.getElementById("f-cond").innerHTML = EDI.conditions.map(b=>`<li>${b}</li>`).join("");
-document.getElementById("f-autres").innerHTML = EDI.produits.filter(x=>x.id!==p.id).map(x=>`<a href="produit.html?p=${x.id}"><i style="background-image:url(${photo(x,200)})"></i>${x.nom}</a>`).join("");
+document.getElementById("f-autres").innerHTML = EDI.produits.filter(x=>x.id!==p.id).map(x=>`<a href="produit.html?p=${x.id}"><i style="background-image:url(${photo(x,200)});background-position:${x.pos}"></i>${x.nom}</a>`).join("");
 montageSimulateur(document.getElementById("sim"), p.id);
 </script>
 </body></html>

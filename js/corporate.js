@@ -43,7 +43,7 @@ function montageSimulateur(el, defId){
   el.innerHTML = `
     <h3>Simulez votre loyer</h3>
     <div class="sim-biens" role="group" aria-label="Type de bien">
-      ${EDI.produits.map(p=>`<button type="button" data-id="${p.id}" aria-pressed="${p.id===cur.id}" style="background-image:url(${photo(p,400)})"><span>${p.court}</span></button>`).join("")}
+      ${EDI.produits.map(p=>`<button type="button" data-id="${p.id}" aria-pressed="${p.id===cur.id}" style="background-image:url(${photo(p,400)});background-position:${p.pos}"><span>${p.court}</span></button>`).join("")}
     </div>
     <div class="champ"><label for="s-prix">Prix du bien (HT)</label>
       <div class="prix-box"><input id="s-prix" class="num" inputmode="numeric" autocomplete="off"><span>DA</span></div></div>
@@ -92,12 +92,12 @@ function carteReseau(el){
 
 /* Carte solution en photo */
 function carteSol(p){
-  return `<a class="sol" href="produit.html?p=${p.id}"><div class="ph" style="background-image:url(${photo(p,1000)})"></div>
+  return `<a class="sol" href="produit.html?p=${p.id}"><div class="ph" style="background-image:url(${photo(p,1000)});background-position:${p.pos}"></div>
   <div class="corps"><h3>${p.nom}</h3><p>${p.desc}</p><span class="lien">Découvrir la solution</span></div></a>`;
 }
 /* Fond du hero : une photo par solution, synchronisée avec le simulateur */
 function heroPhotos(zone, sim){
-  zone.innerHTML = EDI.produits.map(p=>`<div data-id="${p.id}" style="background-image:url(${photo(p,2000)})"></div>`).join("");
+  zone.innerHTML = EDI.produits.map(p=>`<div data-id="${p.id}" style="background-image:url(${photo(p,2000)});background-position:${p.pos}"></div>`).join("");
   const show = id => zone.querySelectorAll("div").forEach(d=>d.classList.toggle("on",d.dataset.id===id));
   let i=0, auto=setInterval(()=>{i=(i+1)%EDI.produits.length; show(EDI.produits[i].id); leg(EDI.produits[i])},5200);
   const lg=document.getElementById("hero-leg");

@@ -6,12 +6,12 @@
   const setPrix=v=>prix.value=v.toLocaleString("fr-FR").replace(/\u202f|\u00a0/g," ");
 
   /* Choix du bien */
-  $("biens").innerHTML=EDI.produits.map((p,i)=>`<button type="button" data-id="${p.id}" aria-pressed="${i===0}"><i style="background-image:url(${photo(p,120)})"></i>${p.court}</button>`).join("");
-  $("fonds").innerHTML=EDI.produits.map(p=>`<div data-id="${p.id}" style="background-image:url(${photo(p,2200)})"></div>`).join("");
+  $("biens").innerHTML=EDI.produits.map((p,i)=>`<button type="button" data-id="${p.id}" aria-pressed="${i===0}"><i style="background-image:url(${photo(p,120)});background-position:${p.pos}"></i>${p.court}</button>`).join("");
+  $("fonds").innerHTML=EDI.produits.map(p=>`<div data-id="${p.id}" style="background-image:url(${photo(p,2200)});background-position:${p.pos}"></div>`).join("");
   function dessiner(){
     $("fonds").querySelectorAll("div").forEach(d=>d.classList.toggle("on",d.dataset.id===cur.id));
     $("ex").innerHTML=`<i></i>${cur.nom} · ${cur.ex}`;
-    $("vitrine").style.backgroundImage=`url(${photo(cur,1800)})`;
+    $("vitrine").style.backgroundImage=`url(${photo(cur,1800)})`; $("vitrine").style.backgroundPosition=cur.pos;
   }
   $("biens").addEventListener("click",e=>{
     const b=e.target.closest("button"); if(!b) return;
