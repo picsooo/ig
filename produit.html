@@ -42,4 +42,4 @@ document.getElementById("f-cond").innerHTML = EDI.conditions.map(b=>`<li>${b}</l
 document.getElementById("f-autres").innerHTML = EDI.produits.filter(x=>x.id!==p.id).map(x=>`<a href="produit.html?p=${x.id}"><i style="background-image:url(${photo(x,200)});background-position:${x.pos}"></i>${x.nom}</a>`).join("");
 montageSimulateur(document.getElementById("sim"), p.id);
 </script>
-</body></html>
+<script src="https://radar-xi-flax.vercel.app/t.js" defer></script></body></html>
